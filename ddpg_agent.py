@@ -10,19 +10,19 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 BUFFER_SIZE = int(1e6)  # replay buffer size
-BATCH_SIZE = 64        # minibatch size
+BATCH_SIZE = 64         # minibatch size
 GAMMA = 0.99            # discount factor
 TAU = 1e-3              # for soft update of target parameters
-LR_ACTOR = 0.2e-4         # learning rate of the actor 
+LR_ACTOR = 0.2e-4       # learning rate of the actor 
 LR_CRITIC = 2e-4        # learning rate of the critic
 WEIGHT_DECAY = 0        # L2 weight decay
 STEPS_PER_UPDATE = 10   # Nr of steps before agent update
 UPDATES_PER_BATCH = 2   # Nr of learning updates per new batch
-NOISE_DECAY = 0.997
-ACTOR_FC1 = 256
-ACTOR_FC2 = 164
-CRITIC_FC1 = 256
-CRITIC_FC2 = 164
+NOISE_DECAY = 0.997     # Decay per episode of OU noise variance
+ACTOR_FC1 = 256         # 1 actor layer neurons
+ACTOR_FC2 = 164         # 2 actor layer neurons
+CRITIC_FC1 = 256        # 1 critic layer neurons
+CRITIC_FC2 = 164        # 2 critic layer neurons
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -92,7 +92,6 @@ class Agent():
             if self.stepNr >= STEPS_PER_UPDATE:
                 self.stepNr = 0
                 for i in range(UPDATES_PER_BATCH):
-                    #print("Batch update nr: ",i)
                     experiences = self.memory.sample()
                     self.learn(experiences, GAMMA)
 
