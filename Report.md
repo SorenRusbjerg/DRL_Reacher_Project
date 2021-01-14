@@ -62,8 +62,10 @@ Below is a list of updates and steps made gradually to produce the final agent i
 In the end the reduced learning rate together with a smaller network size seemed to make the agent train and gets average scores above 1. 
 Also the decreasing OU process noise seems to help here. 
 In the folder `/Training examples` different agent version training steps can be found as `*.html` files. 
-The final version is found [here](../Training%20examples/Navigation_ddqn_500episodes_BN_medium_net_Low_LR2_NoiseLowerLimIncreased_1800_2.html)
+The final version is found [here](./Training%20examples/Navigation_ddqn_1800episodes_BN_medium_net_Low_LR2_NoiseLowerLimIncreased_2.html)
 
+Final training score plot:
+![image info](./Training%20examples/Training.PNG)
 
 
 ## Future improvements
